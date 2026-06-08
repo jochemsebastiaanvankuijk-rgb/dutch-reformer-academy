@@ -20,6 +20,18 @@ npm run dev
 
 Productiedomein: `https://dutchreformeracademy.nl`
 
+## iDEAL via Mollie
+
+Maak een `.env.local` bestand op basis van `.env.example`:
+
+```bash
+MOLLIE_API_KEY=test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+NEXT_PUBLIC_SITE_URL=https://dutchreformeracademy.nl
+```
+
+Gebruik eerst een Mollie test API-key. Voor live betalingen vervang je deze door
+de live API-key uit het Mollie dashboard.
+
 ## Deployment
 
 Aanbevolen hosting: Vercel.

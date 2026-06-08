@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { trainingDates as dates } from "@/lib/trainingDates";
 import {
   Award,
   BadgeCheck,
@@ -12,12 +13,15 @@ import {
   CircleDot,
   Dumbbell,
   HeartPulse,
+  Mail,
   MapPin,
   Medal,
   MessageCircle,
   Move3D,
   ParkingCircle,
   PenLine,
+  Phone,
+  Send,
   ShieldCheck,
   Star,
   Train,
@@ -25,15 +29,15 @@ import {
   Users
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 const heroImage =
   "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&w=2200&q=82";
 
 const trainerImages = [
-  "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1554244933-d876deb6b2ff?auto=format&fit=crop&w=900&q=80",
-  "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80"
+  "https://images.pexels.com/photos/6739930/pexels-photo-6739930.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "https://images.pexels.com/photos/28246590/pexels-photo-28246590.jpeg?auto=compress&cs=tinysrgb&w=900",
+  "https://images.pexels.com/photos/20044028/pexels-photo-20044028.jpeg?auto=compress&cs=tinysrgb&w=900"
 ];
 
 const fadeUp = {
@@ -79,30 +83,6 @@ const program = [
   ["Dag 3", "Intermediate progressies"],
   ["Dag 4", "Lesgeven en coaching"],
   ["Dag 5", "Praktijkexamen en certificering"]
-];
-
-const dates = [
-  {
-    date: "27 t/m 31 juli",
-    filled: 12,
-    status: "12 van 15 plekken bezet",
-    tone: "Nog 3 plekken",
-    disabled: false
-  },
-  {
-    date: "10 t/m 14 augustus",
-    filled: 8,
-    status: "8 van 15 plekken bezet",
-    tone: "Beschikbaar",
-    disabled: false
-  },
-  {
-    date: "24 t/m 28 augustus",
-    filled: 15,
-    status: "Volgeboekt",
-    tone: "Wachtlijst",
-    disabled: true
-  }
 ];
 
 const reviews = [
@@ -188,8 +168,8 @@ const faqs = [
     "Ja. Op de laatste dag werk je toe naar een praktijkmoment waarin techniek, lesopbouw, cueing en veiligheid samenkomen."
   ],
   [
-    "Kan ik doorgroeien na Foundation?",
-    "Ja. Na Foundation kun je verder verdiepen richting Advanced Trainer en uiteindelijk Master Trainer."
+    "Kan ik doorgroeien na Reformer Instructeur Level A?",
+    "Ja. Na Reformer Instructeur Level A kun je verder verdiepen richting Reformer Instructeur Level B en uiteindelijk Reformer Instructeur Level C."
   ]
 ];
 
@@ -222,7 +202,7 @@ const locationItems: Array<{
 
 const packages = [
   {
-    name: "Foundation",
+    name: "Reformer Instructeur Level A",
     price: "€1.000",
     text: "De volledige 5-daagse basisopleiding om zelfstandig professionele reformerlessen te verzorgen.",
     features: [
@@ -235,10 +215,11 @@ const packages = [
     ]
   },
   {
-    name: "Advanced Trainer",
-    price: "Op aanvraag",
+    name: "Reformer Instructeur Level B",
+    price: "€799",
     text: "Verdieping voor trainers die meer willen werken met progressies, programmering en verfijnde coaching.",
     features: [
+      "3 opleidingsdagen",
       "Advanced reformer progressies",
       "Verdiepende techniek",
       "Lesopbouw voor verschillende niveaus",
@@ -246,10 +227,11 @@ const packages = [
     ]
   },
   {
-    name: "Master Trainer",
-    price: "Op aanvraag",
+    name: "Reformer Instructeur Level C",
+    price: "€799",
     text: "Voor ervaren trainers die hun rol willen uitbreiden richting mentoring, docentontwikkeling en opleiding.",
     features: [
+      "3 opleidingsdagen",
       "Train-the-trainer verdieping",
       "Docentontwikkeling",
       "Begeleiden van instructeurs",
@@ -293,9 +275,13 @@ function SectionIntro({
   );
 }
 
+function packageSlug(name: string) {
+  return name.toLowerCase().replace(/\s+/g, "-");
+}
+
 function PrimaryCta({ light = false }: { light?: boolean }) {
   return (
-    <a href="#inschrijven" className={light ? "cta-button-light" : "cta-button"}>
+    <a href="/inschrijven" className={light ? "cta-button-light" : "cta-button"}>
       Reserveer jouw plek
       <ChevronDown aria-hidden="true" className="h-4 w-4 -rotate-90" />
     </a>
@@ -304,16 +290,14 @@ function PrimaryCta({ light = false }: { light?: boolean }) {
 
 export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitted(true);
-  }
+  const [contactSent, setContactSent] = useState(false);
+  const [contactSending, setContactSending] = useState(false);
+  const [quoteSent, setQuoteSent] = useState(false);
+  const [quoteSending, setQuoteSending] = useState(false);
 
   return (
     <main className="overflow-hidden bg-porcelain">
-      <section className="relative flex min-h-screen items-start pt-32 text-white sm:pt-36 lg:pt-40">
+      <section className="relative flex min-h-[60vh] items-start pt-20 text-white sm:pt-24 lg:min-h-[60vh] lg:pt-28">
         <div className="image-vignette absolute inset-0">
           <Image
             src={heroImage}
@@ -327,18 +311,15 @@ export default function LandingPage() {
         <div className="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-ink/10 backdrop-blur-md">
           <div className="section-shell flex h-20 items-center justify-between">
             <div>
-              <p className="font-display text-xl font-bold leading-none sm:text-2xl">
+              <p className="font-display text-[1.625rem] font-bold leading-none sm:text-[2rem]">
                 <span className="sm:hidden">RPA</span>
                 <span className="hidden sm:inline">Dutch Reformer Academy</span>
-              </p>
-              <p className="mt-1 hidden text-[11px] uppercase tracking-[0.28em] text-white/58 sm:block">
-                Instructor Education
               </p>
             </div>
           </div>
         </div>
         <div className="section-shell relative z-10">
-          <div className="grid items-start gap-10 lg:grid-cols-[1fr_360px]">
+          <div className="grid items-start gap-10">
             <motion.div
               initial={{ opacity: 0, y: 34 }}
               animate={{ opacity: 1, y: 0 }}
@@ -346,54 +327,198 @@ export default function LandingPage() {
               className="max-w-5xl"
             >
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-clay/90">
-                Premium 5-daagse instructeursopleiding
+                Premium Reformer Pilates instructeur opleidingen
               </p>
               <h1 className="text-balance font-display text-5xl font-bold leading-[0.9] sm:text-7xl lg:text-[5.8rem]">
                 Word Gecertificeerd Reformer Pilates Instructeur
+                <span className="mt-3 block text-3xl leading-none text-clay sm:text-5xl lg:text-6xl">
+                  Level A, B of C
+                </span>
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl">
-                Een intensieve 5-daagse opleiding in Roosendaal, gegeven door
-                ervaren master trainers. Praktijkgericht, persoonlijk en exclusief
-                voor maximaal 15 deelnemers per groep.
+                Praktijkgericht, persoonlijk en exclusief voor maximaal 15
+                deelnemers per groep.
               </p>
               <div className="mt-9">
                 <PrimaryCta light />
               </div>
             </motion.div>
-            <motion.aside
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.32, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-16 hidden rounded-lg border border-white/15 bg-white/[0.08] p-6 shadow-soft backdrop-blur-2xl lg:block"
-            >
-              <p className="text-xs uppercase tracking-[0.28em] text-clay">Cohort</p>
-              <div className="mt-6 grid grid-cols-2 gap-4">
-                {[
-                  ["40", "contacturen"],
-                  ["15", "deelnemers max"],
-                  ["5", "opleidingsdagen"],
-                  ["1", "certificaat"]
-                ].map(([value, label]) => (
-                  <div key={label} className="border-t border-white/16 pt-4">
-                    <p className="font-display text-5xl font-bold leading-none">
-                      {value}
-                    </p>
-                    <p className="mt-2 text-xs uppercase tracking-[0.18em] text-white/58">
-                      {label}
-                    </p>
+          </div>
+        </div>
+      </section>
+      <section id="inschrijven" className="py-24 sm:py-32">
+        <div className="section-shell">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-ink"
+          >
+            <div className="mb-8">
+              <p className="eyebrow mb-4">Investering</p>
+              <h2 className="font-display text-4xl font-bold leading-tight sm:text-6xl">
+                Kies jouw opleidingstraject
+              </h2>
+            </div>
+            <div className="grid items-stretch gap-4 lg:grid-cols-3">
+              {packages.map((item, index) => (
+                <article
+                  key={item.name}
+                  className="flex h-full flex-col rounded-lg border border-ink/10 bg-white/90 p-6 text-ink shadow-soft"
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-4">
+                    <div>
+                      <p
+                        className="text-xs font-semibold uppercase tracking-[0.28em] text-bronze"
+                      >
+                        Pakket {index + 1}
+                      </p>
+                      <h3 className="mt-3 font-display text-4xl font-bold">
+                        {item.name}
+                      </h3>
+                    </div>
+                    <p className="font-display text-3xl font-bold">{item.price}</p>
                   </div>
-                ))}
-              </div>
-            </motion.aside>
+                  <p
+                    className="mt-4 leading-7 text-graphite/70"
+                  >
+                    {item.text}
+                  </p>
+                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {item.features.map((feature) => (
+                      <div key={feature} className="flex items-start gap-3">
+                        <Check
+                          aria-hidden="true"
+                          className="mt-0.5 h-4 w-4 shrink-0 text-bronze"
+                        />
+                        <span
+                          className="text-sm leading-6 text-graphite/70"
+                        >
+                          {feature}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <a
+                    href={`/inschrijven?pakket=${packageSlug(item.name)}`}
+                    className="mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30"
+                  >
+                    Reserveer jouw plek
+                    <ChevronDown aria-hidden="true" className="h-4 w-4 -rotate-90" />
+                  </a>
+                </article>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section id="opleidingsdata" className="soft-dark-section py-24 sm:py-32">
+        <div className="section-shell">
+          <SectionIntro title="Beschikbare opleidingsdata" light />
+          <div className="mt-14 grid items-stretch gap-4 lg:grid-cols-3">
+            {dates.map((item, index) => {
+              const progress = Math.round((item.filled / 15) * 100);
+              return (
+                <motion.article
+                  key={item.date}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ delay: index * 0.06, duration: 0.6 }}
+                  className="flex h-full min-h-[430px] flex-col rounded-lg border border-white/10 bg-white p-6 text-ink shadow-soft transition duration-300 hover:-translate-y-1"
+                >
+                  <div className="mb-8 flex items-center justify-between gap-4">
+                    <CalendarDays aria-hidden="true" className="h-7 w-7 text-bronze" />
+                    <span
+                      className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                        item.disabled
+                          ? "bg-ink text-white"
+                          : "bg-bronze/10 text-bronze"
+                      }`}
+                    >
+                      {item.tone}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-3xl font-bold text-ink">{item.date}</h3>
+                  <div className="mt-4 rounded-lg border border-ink/10 bg-linen p-4">
+                    <p className="text-sm font-semibold text-ink">{item.level}</p>
+                    <div className="mt-3 grid gap-1.5 text-sm text-graphite/70">
+                      <p>Locatie: {item.location}</p>
+                      <p>Naam trainer: {item.trainer}</p>
+                      <p>Duur: {item.duration}</p>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-graphite/70">{item.status}</p>
+                  <div className="mt-7 h-1.5 rounded-full bg-ink/10">
+                    <div
+                      className="h-full rounded-full bg-bronze"
+                      style={{ width: `${progress}%` }}
+                    />
+                  </div>
+                  <p className="mt-2 text-right text-sm text-graphite/60">{progress}%</p>
+                  <a
+                    href={`/inschrijven?pakket=${packageSlug(item.level)}&datum=${encodeURIComponent(item.date)}`}
+                    className="mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30"
+                  >
+                    Reserveer jouw plek
+                    <ChevronDown aria-hidden="true" className="h-4 w-4 -rotate-90" />
+                  </a>
+                </motion.article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <section className="py-24 sm:py-32">
+        <div className="section-shell">
+          <SectionIntro eyebrow="Master trainers" title="Ontmoet onze trainers" />
+          <div className="mt-14 grid gap-5 lg:grid-cols-3">
+            {trainerImages.map((src, index) => (
+              <motion.article
+                key={src}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ delay: index * 0.08, duration: 0.62 }}
+                className="overflow-hidden rounded-lg border border-ink/10 bg-white shadow-soft"
+              >
+                <div className="relative aspect-[4/5]">
+                  <Image
+                    src={src}
+                    alt={`Trainer Naam ${index + 1}`}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="border-t border-ink/10 p-7">
+                  <h3 className="text-2xl font-semibold text-ink">Trainer Naam</h3>
+                  <p className="mt-1 text-sm uppercase tracking-[0.22em] text-bronze">
+                    Master Trainer Reformer Pilates
+                  </p>
+                  <p className="mt-5 leading-7 text-graphite/70">
+                    15+ jaar ervaring in Pilates, bewegingsleer en
+                    docentontwikkeling. Gespecialiseerd in het opleiden van
+                    nieuwe instructeurs.
+                  </p>
+                </div>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
+
+      <section className="soft-dark-section py-24 sm:py-32">
         <div className="section-shell">
           <SectionIntro
             eyebrow="Academy standard"
             title="Waarom kiezen voor onze Reformer Pilates Opleiding?"
+            light
           />
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {whyCards.map(({ icon: Icon, title, text }, index) => (
@@ -455,9 +580,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
+      <section className="soft-dark-section py-24 sm:py-32">
         <div className="section-shell">
-          <SectionIntro eyebrow="5 dagen, 40 contacturen" title="Opleidingsprogramma" />
+          <SectionIntro
+            eyebrow="Reformer Instructeur Level A · 5 dagen, 40 contacturen"
+            title="Opleidingsprogramma"
+            light
+          />
           <div className="mx-auto mt-16 max-w-4xl">
             {program.map(([day, title], index) => (
               <motion.div
@@ -467,13 +596,13 @@ export default function LandingPage() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ delay: index * 0.06, duration: 0.6 }}
-                className="relative grid gap-5 border-l border-ink/10 pb-10 pl-8 last:pb-0 sm:grid-cols-[140px_1fr]"
+                className="relative grid gap-5 border-l border-white/15 pb-10 pl-8 last:pb-0 sm:grid-cols-[140px_1fr]"
               >
-                <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-4 border-porcelain bg-bronze shadow-glow" />
+                <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full border-4 border-[#24221f] bg-bronze shadow-glow" />
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-bronze">
                   {day}
                 </p>
-                <div className="rounded-lg border border-ink/10 bg-white/90 p-6 shadow-soft">
+                <div className="rounded-lg border border-white/10 bg-white p-6 shadow-soft">
                   <h3 className="text-2xl font-semibold text-ink">{title}</h3>
                 </div>
               </motion.div>
@@ -482,94 +611,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-ink py-24 text-white sm:py-32">
-        <div className="section-shell">
-          <SectionIntro eyebrow="Master trainers" title="Ontmoet onze trainers" light />
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
-            {trainerImages.map((src, index) => (
-              <motion.article
-                key={src}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ delay: index * 0.08, duration: 0.62 }}
-                className="overflow-hidden rounded-lg border border-white/10 bg-white/[0.055] shadow-soft"
-              >
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={src}
-                    alt={`Trainer Naam ${index + 1}`}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="border-t border-white/10 p-7">
-                  <h3 className="text-2xl font-semibold">Trainer Naam</h3>
-                  <p className="mt-1 text-sm uppercase tracking-[0.22em] text-clay">
-                    Master Trainer Reformer Pilates
-                  </p>
-                  <p className="mt-5 leading-7 text-white/70">
-                    15+ jaar ervaring in Pilates, bewegingsleer en
-                    docentontwikkeling. Gespecialiseerd in het opleiden van
-                    nieuwe instructeurs.
-                  </p>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-24 sm:py-32">
-        <div className="section-shell">
-          <SectionIntro title="Beschikbare opleidingsdata" />
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
-            {dates.map((item, index) => {
-              const progress = Math.round((item.filled / 15) * 100);
-              return (
-                <motion.article
-                  key={item.date}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-80px" }}
-                  transition={{ delay: index * 0.06, duration: 0.6 }}
-                className="premium-card rounded-lg p-7"
-              >
-                  <div className="mb-8 flex items-center justify-between gap-4">
-                    <CalendarDays aria-hidden="true" className="h-7 w-7 text-bronze" />
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                        item.disabled
-                          ? "bg-ink text-white"
-                          : "bg-bronze/10 text-bronze"
-                      }`}
-                    >
-                      {item.tone}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-3xl font-bold text-ink">{item.date}</h3>
-                  <p className="mt-3 text-graphite/70">{item.status}</p>
-                  <div className="mt-7 h-1.5 rounded-full bg-ink/10">
-                    <div
-                      className="h-full rounded-full bg-bronze"
-                      style={{ width: `${progress}%` }}
-                    />
-                  </div>
-                  <p className="mt-2 text-right text-sm text-graphite/60">{progress}%</p>
-                  <div className="mt-7">
-                    <PrimaryCta />
-                  </div>
-                </motion.article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="luxury-band py-24 sm:py-32">
         <div className="section-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <motion.div
             variants={fadeUp}
@@ -609,7 +651,7 @@ export default function LandingPage() {
               src="https://www.google.com/maps?q=Roosendaal%2C%20Nederland&output=embed"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 h-full w-full border-0 grayscale"
+              className="absolute inset-0 h-full w-full border-0"
             />
             <div className="absolute inset-0 bg-ink/10 mix-blend-multiply" />
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink/42 to-transparent" />
@@ -624,157 +666,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="inschrijven" className="py-24 sm:py-32">
-        <div className="section-shell">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-ink"
-          >
-            <div className="mb-8">
-              <p className="eyebrow mb-4">Investering</p>
-              <h2 className="font-display text-4xl font-bold leading-tight sm:text-6xl">
-                Kies jouw opleidingstraject
-              </h2>
-            </div>
-            <div className="grid gap-4 lg:grid-cols-3">
-              {packages.map((item, index) => (
-                <article
-                  key={item.name}
-                  className={`rounded-lg border p-6 shadow-soft ${
-                    index === 0
-                      ? "border-ink bg-ink text-white"
-                      : "border-ink/10 bg-white/90 text-ink"
-                  }`}
-                >
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div>
-                      <p
-                        className={`text-xs font-semibold uppercase tracking-[0.28em] ${
-                          index === 0 ? "text-clay" : "text-bronze"
-                        }`}
-                      >
-                        Pakket {index + 1}
-                      </p>
-                      <h3 className="mt-3 font-display text-4xl font-bold">
-                        {item.name}
-                      </h3>
-                    </div>
-                    <p className="font-display text-3xl font-bold">{item.price}</p>
-                  </div>
-                  <p
-                    className={`mt-4 leading-7 ${
-                      index === 0 ? "text-white/70" : "text-graphite/70"
-                    }`}
-                  >
-                    {item.text}
-                  </p>
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                    {item.features.map((feature) => (
-                      <div key={feature} className="flex items-start gap-3">
-                        <Check
-                          aria-hidden="true"
-                          className={`mt-0.5 h-4 w-4 shrink-0 ${
-                            index === 0 ? "text-clay" : "text-bronze"
-                          }`}
-                        />
-                        <span
-                          className={`text-sm leading-6 ${
-                            index === 0 ? "text-white/80" : "text-graphite/70"
-                          }`}
-                        >
-                          {feature}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-            <div className="mt-10">
-              <PrimaryCta />
-            </div>
-          </motion.div>
 
-          <motion.form
-            onSubmit={handleSubmit}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="mx-auto mt-14 max-w-4xl rounded-lg border border-ink/10 bg-white/92 p-6 shadow-soft sm:p-8"
-          >
-            <div className="mb-8">
-              <p className="eyebrow mb-3">Inschrijving</p>
-              <h2 className="font-display text-4xl font-bold text-ink">
-                Reserveer jouw plek
-              </h2>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="grid gap-2 text-sm font-medium text-graphite">
-                Naam
-                <input
-                  required
-                  name="name"
-                  className="min-h-12 rounded-lg border border-ink/10 bg-porcelain px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-medium text-graphite">
-                E-mail
-                <input
-                  required
-                  type="email"
-                  name="email"
-                  className="min-h-12 rounded-lg border border-ink/10 bg-porcelain px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-medium text-graphite">
-                Telefoon
-                <input
-                  required
-                  type="tel"
-                  name="phone"
-                  className="min-h-12 rounded-lg border border-ink/10 bg-porcelain px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-medium text-graphite">
-                Gewenste datum
-                <select
-                  name="date"
-                  className="min-h-12 rounded-lg border border-ink/10 bg-porcelain px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
-                >
-                  <option>27 t/m 31 juli</option>
-                  <option>10 t/m 14 augustus</option>
-                  <option>Wachtlijst 24 t/m 28 augustus</option>
-                </select>
-              </label>
-            </div>
-            <label className="mt-4 grid gap-2 text-sm font-medium text-graphite">
-              Bericht
-              <textarea
-                name="message"
-                rows={4}
-                className="rounded-lg border border-ink/10 bg-porcelain px-4 py-3 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
-              />
-            </label>
-            <button type="submit" className="cta-button mt-6 w-full sm:w-auto">
-              Reserveer jouw plek
-              <ChevronDown aria-hidden="true" className="h-4 w-4 -rotate-90" />
-            </button>
-            {submitted ? (
-              <p className="mt-4 rounded-lg bg-bronze/10 px-4 py-3 text-sm font-medium text-bronze">
-                Dank je. Je reserveringsaanvraag is ontvangen.
-              </p>
-            ) : null}
-          </motion.form>
-        </div>
-      </section>
-
-      <section className="luxury-band py-24 sm:py-32">
+      <section className="soft-dark-section py-24 sm:py-32">
         <div className="section-shell">
-          <SectionIntro title="Wat deelnemers zeggen" />
+          <SectionIntro title="Wat deelnemers zeggen" light />
           <div className="mt-14 columns-1 gap-5 sm:columns-2 lg:columns-3">
             {reviews.map((review, index) => (
               <motion.article
@@ -834,8 +729,8 @@ export default function LandingPage() {
               Na afronding
             </h2>
             <p className="mt-6 body-copy">
-              Na succesvolle afronding ontvang je een certificaat van de Reformer
-              Dutch Reformer Academy als bewijs van deelname en behaalde competenties.
+              Na succesvolle afronding ontvang je een certificaat van de Dutch
+              Reformer Academy als bewijs van deelname en behaalde competenties.
             </p>
           </motion.div>
           <motion.div
@@ -864,7 +759,286 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <section className="soft-dark-section py-24 sm:py-32">
+        <div className="section-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <p className="eyebrow mb-4">Persoonlijk advies</p>
+            <h2 className="font-display text-4xl font-bold leading-tight text-white sm:text-6xl">
+              Neem contact met mij op
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-8 text-white/72 sm:text-lg">
+              Heb je een vraag over Reformer Instructeur Level A, B of C? Laat je gegevens
+              achter, dan nemen we persoonlijk contact met je op.
+            </p>
+            <div className="mt-8 grid gap-4">
+              {[
+                {
+                  icon: Phone,
+                  title: "Persoonlijke opvolging",
+                  text: "We denken graag mee over welk traject het beste past."
+                },
+                {
+                  icon: Mail,
+                  title: "Vraag stellen",
+                  text: "Stel je vraag over data, inhoud, betaling of niveau."
+                }
+              ].map(({ icon: Icon, title, text }) => (
+                <div key={title} className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-bronze shadow-soft">
+                    <Icon aria-hidden="true" className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white">{title}</h3>
+                    <p className="mt-1 text-sm leading-6 text-white/60">{text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.form
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            onSubmit={async (event) => {
+              event.preventDefault();
+              const form = event.currentTarget;
+              const formData = new FormData(form);
+
+              setContactSending(true);
+              await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(Object.fromEntries(formData))
+              });
+              setContactSending(false);
+              setContactSent(true);
+              form.reset();
+            }}
+            className="rounded-lg border border-ink/10 bg-white p-6 shadow-soft sm:p-8"
+          >
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="grid gap-2 text-sm font-medium text-graphite">
+                Naam
+                <input
+                  required
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  className="min-h-12 rounded-lg border border-ink/10 bg-porcelain px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                />
+              </label>
+              <label className="grid gap-2 text-sm font-medium text-graphite">
+                Telefoonnummer
+                <input
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  className="min-h-12 rounded-lg border border-ink/10 bg-porcelain px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                />
+              </label>
+              <label className="grid gap-2 text-sm font-medium text-graphite">
+                E-mailadres
+                <input
+                  required
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  className="min-h-12 rounded-lg border border-ink/10 bg-porcelain px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                />
+              </label>
+              <label className="grid gap-2 text-sm font-medium text-graphite">
+                Interesse in
+                <select
+                  name="level"
+                  defaultValue="Reformer Instructeur Level A"
+                  className="min-h-12 rounded-lg border border-ink/10 bg-porcelain px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                >
+                  <option>Reformer Instructeur Level A</option>
+                  <option>Reformer Instructeur Level B</option>
+                  <option>Reformer Instructeur Level C</option>
+                  <option>Ik twijfel nog</option>
+                </select>
+              </label>
+            </div>
+            <label className="mt-5 grid gap-2 text-sm font-medium text-graphite">
+              Vraag of opmerking
+              <textarea
+                required
+                name="question"
+                rows={5}
+                className="rounded-lg border border-ink/10 bg-porcelain px-4 py-3 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+              />
+            </label>
+            {contactSent ? (
+              <p className="mt-5 rounded-lg bg-linen px-4 py-3 text-sm font-semibold text-ink">
+                Bedankt. Je bericht is ontvangen.
+              </p>
+            ) : null}
+            <button
+              type="submit"
+              disabled={contactSending}
+              className="mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-ink bg-white px-6 py-3 text-sm font-semibold text-ink transition duration-300 hover:-translate-y-0.5 hover:bg-ink hover:text-white focus:outline-none focus:ring-4 focus:ring-bronze/30 sm:w-auto"
+            >
+              {contactSending ? "Versturen..." : "Verstuur vraag"}
+              <Send aria-hidden="true" className="h-4 w-4" />
+            </button>
+          </motion.form>
+        </div>
+      </section>
+
       <section className="luxury-band py-24 sm:py-32">
+        <div className="section-shell">
+          <div className="grid gap-12 rounded-lg border border-ink/10 bg-white p-6 shadow-soft sm:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:p-12">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <p className="eyebrow mb-4">Voor studio's en teams</p>
+              <h2 className="font-display text-4xl font-bold leading-tight text-ink sm:text-6xl">
+                Met je hele team een training volgen?
+              </h2>
+              <p className="mt-6 body-copy">
+                Voor nieuwe studio's, bestaande teams en ketens gelden speciale
+                prijzen. Ideaal wanneer je meerdere instructeurs tegelijk wilt
+                opleiden volgens dezelfde standaard.
+              </p>
+              <div className="mt-8 grid gap-4">
+                {[
+                  "Speciale teamprijzen vanaf meerdere deelnemers",
+                  "Geschikt voor nieuwe reformer studio's en studio-ketens",
+                  "Offerte op maat voor planning, niveau en groepsgrootte"
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <Check
+                      aria-hidden="true"
+                      className="mt-1 h-4 w-4 shrink-0 text-bronze"
+                    />
+                    <p className="leading-7 text-graphite/70">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.form
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              onSubmit={async (event) => {
+                event.preventDefault();
+                const form = event.currentTarget;
+                const formData = new FormData(form);
+
+                setQuoteSending(true);
+                await fetch("/api/contact", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    type: "Team offerte",
+                    ...Object.fromEntries(formData)
+                  })
+                });
+                setQuoteSending(false);
+                setQuoteSent(true);
+                form.reset();
+              }}
+              className="rounded-lg border border-ink/10 bg-porcelain p-6 sm:p-8"
+            >
+              <div className="grid gap-5 sm:grid-cols-2">
+                <label className="grid gap-2 text-sm font-medium text-graphite">
+                  Naam
+                  <input
+                    required
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    className="min-h-12 rounded-lg border border-ink/10 bg-white px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                  />
+                </label>
+                <label className="grid gap-2 text-sm font-medium text-graphite">
+                  Studio of organisatie
+                  <input
+                    name="company"
+                    type="text"
+                    autoComplete="organization"
+                    className="min-h-12 rounded-lg border border-ink/10 bg-white px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                  />
+                </label>
+                <label className="grid gap-2 text-sm font-medium text-graphite">
+                  E-mailadres
+                  <input
+                    required
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    className="min-h-12 rounded-lg border border-ink/10 bg-white px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                  />
+                </label>
+                <label className="grid gap-2 text-sm font-medium text-graphite">
+                  Telefoonnummer
+                  <input
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    className="min-h-12 rounded-lg border border-ink/10 bg-white px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                  />
+                </label>
+                <label className="grid gap-2 text-sm font-medium text-graphite sm:col-span-2">
+                  Aantal deelnemers
+                  <select
+                    required
+                    name="participants"
+                    defaultValue=""
+                    className="min-h-12 rounded-lg border border-ink/10 bg-white px-4 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                  >
+                    <option value="" disabled>
+                      Kies aantal deelnemers
+                    </option>
+                    <option>2 deelnemers</option>
+                    <option>3 deelnemers</option>
+                    <option>4 deelnemers</option>
+                    <option>5 deelnemers</option>
+                    <option>6 tot 10 deelnemers</option>
+                    <option>Meer dan 10 deelnemers</option>
+                  </select>
+                </label>
+              </div>
+              <label className="mt-5 grid gap-2 text-sm font-medium text-graphite">
+                Wensen of planning
+                <textarea
+                  name="question"
+                  rows={4}
+                  className="rounded-lg border border-ink/10 bg-white px-4 py-3 outline-none transition focus:border-bronze focus:ring-4 focus:ring-bronze/10"
+                />
+              </label>
+              {quoteSent ? (
+                <p className="mt-5 rounded-lg bg-linen px-4 py-3 text-sm font-semibold text-ink">
+                  Bedankt. We nemen contact op met een offerte op maat.
+                </p>
+              ) : null}
+              <button
+                type="submit"
+                disabled={quoteSending}
+                className="mt-7 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-ink bg-ink px-6 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30 sm:w-auto"
+              >
+                {quoteSending ? "Versturen..." : "Ontvang offerte op maat"}
+                <Send aria-hidden="true" className="h-4 w-4" />
+              </button>
+            </motion.form>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 sm:py-32">
         <div className="section-shell">
           <SectionIntro title="Veelgestelde vragen" />
           <div className="mx-auto mt-14 max-w-3xl divide-y divide-ink/10 rounded-lg border border-ink/10 bg-white shadow-soft">
@@ -899,7 +1073,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-ink py-24 text-white sm:py-32">
+      <section className="soft-dark-section py-24 sm:py-32">
         <div className="section-shell text-center">
           <motion.div
             variants={fadeUp}
@@ -908,19 +1082,16 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="mx-auto max-w-4xl"
           >
-            <h2 className="font-display text-5xl font-bold leading-tight sm:text-7xl">
+            <h2 className="font-display text-5xl font-bold leading-tight text-white sm:text-7xl">
               Start jouw carrière als Reformer Pilates Instructeur
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/72">
               Kleine groepen. Persoonlijke begeleiding. Maximaal 15 deelnemers
               per opleiding.
             </p>
             <div className="mt-10">
               <PrimaryCta light />
             </div>
-            <p className="mt-5 text-sm font-medium text-clay">
-              Nog enkele plaatsen beschikbaar.
-            </p>
           </motion.div>
         </div>
       </section>

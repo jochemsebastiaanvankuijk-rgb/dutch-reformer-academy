@@ -114,6 +114,38 @@ button {
     linear-gradient(180deg, rgba(251, 250, 247, 0), rgba(246, 241, 234, 0.72) 48%, rgba(251, 250, 247, 0));
 }
 
+.soft-dark-section {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  background: #050505;
+}
+
+.soft-dark-section::before,
+.soft-dark-section::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  height: 96px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.soft-dark-section::before {
+  top: 0;
+  background: transparent;
+}
+
+.soft-dark-section::after {
+  bottom: 0;
+  background: transparent;
+}
+
+.soft-dark-section > .section-shell {
+  position: relative;
+  z-index: 1;
+}
+
 .text-balance {
   text-wrap: balance;
 }
