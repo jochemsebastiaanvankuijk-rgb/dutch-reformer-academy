@@ -5,6 +5,7 @@ out/
 dist/
 work/
 outputs/
+dutch-reformer-academy/
 *.tsbuildinfo
 .pnpm-debug.log
 npm-debug.log*
