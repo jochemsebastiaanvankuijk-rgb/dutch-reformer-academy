@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const packagePrices: Record<string, number> = {
-  "trainer-level-a": 1000,
-  "trainer-level-b": 799,
-  "trainer-level-c": 799
+  "reformer-instructeur-level-a": 1000,
+  "reformer-instructeur-level-b": 799,
+  "reformer-instructeur-level-c": 799
 };
 
 export async function POST(request: NextRequest) {
