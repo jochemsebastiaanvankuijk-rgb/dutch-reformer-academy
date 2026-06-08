@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowLeft, Check, Lock, ShieldCheck } from "lucide-react";
@@ -35,7 +35,7 @@ type CheckoutResponse = {
   error?: string;
 };
 
-export default function RegisterPage() {
+function RegisterPageContent() {
   const searchParams = useSearchParams();
   const packageParam = searchParams.get("pakket");
   const initialPackage = packages.some((item) => item.slug === packageParam)
@@ -273,5 +273,22 @@ export default function RegisterPage() {
         </aside>
       </section>
     </main>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen items-center justify-center bg-porcelain px-5">
+          <div className="rounded-lg border border-ink/10 bg-white p-8 text-center shadow-soft">
+            <p className="eyebrow mb-3">Inschrijving</p>
+            <p className="font-display text-3xl font-bold text-ink">Laden...</p>
+          </div>
+        </main>
+      }
+    >
+      <RegisterPageContent />
+    </Suspense>
   );
 }
