@@ -141,7 +141,7 @@ const faqs = [
   ],
   [
     "Kan ik in termijnen betalen?",
-    "Ja, termijnbetaling is mogelijk. Vermeld dit bij je reservering, dan nemen we de opties persoonlijk met je door."
+    "Nee, het is helaas niet mogelijk om in termijnen te betalen gezien de opleiding 5 aaneengesloten dagen is."
   ],
   [
     "Wat gebeurt er als ik een dag mis?",
