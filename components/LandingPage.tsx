@@ -339,9 +339,6 @@ export default function LandingPage() {
                 Praktijkgericht, persoonlijk en exclusief voor maximaal 15
                 deelnemers per groep.
               </p>
-              <div className="mt-9">
-                <PrimaryCta light />
-              </div>
             </motion.div>
           </div>
         </div>
