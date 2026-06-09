@@ -1124,10 +1124,6 @@ export default function LandingPage() {
           </motion.div>
         </div>
       </section>
-
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/20 bg-ink/90 p-3 shadow-glow backdrop-blur-xl sm:hidden">
-        <PrimaryCta light />
-      </div>
     </main>
   );
 }
