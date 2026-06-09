@@ -1074,8 +1074,8 @@ export default function LandingPage() {
               Start jouw carrière als Reformer Pilates Instructeur
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/72">
-              Kleine groepen. Persoonlijke begeleiding. Maximaal 15 deelnemers
-              per opleiding.
+              Premium opleiding, Kleine groepen, Persoonlijke begeleiding,
+              Praktijkgericht.
             </p>
             <div className="mt-10">
               <PrimaryCta light />
