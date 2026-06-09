@@ -298,7 +298,7 @@ export default function LandingPage() {
 
   return (
     <main className="overflow-hidden bg-porcelain">
-      <section className="relative flex min-h-[60vh] items-start pt-20 text-white sm:pt-24 lg:min-h-[60vh] lg:pt-28">
+      <section className="relative flex min-h-[60vh] items-center pb-10 pt-24 text-white sm:pt-24 lg:min-h-[60vh] lg:items-start lg:pb-0 lg:pt-28">
         <div className="image-vignette absolute inset-0">
           <Image
             src={heroImage}
@@ -324,7 +324,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 34 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-5xl"
+              className="mx-auto max-w-4xl text-center lg:mx-0 lg:max-w-5xl lg:text-left"
             >
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-clay/90">
                 Premium Reformer Pilates instructeur opleidingen
