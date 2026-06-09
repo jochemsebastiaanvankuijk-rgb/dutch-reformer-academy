@@ -301,7 +301,7 @@ export default function LandingPage() {
 
   return (
     <main className="overflow-hidden bg-porcelain">
-      <section className="relative flex min-h-[75vh] items-start pt-20 text-white sm:pt-24 lg:min-h-[75vh] lg:pt-28">
+      <section className="relative flex min-h-[60vh] items-start pt-20 text-white sm:pt-24 lg:min-h-[60vh] lg:pt-28">
         <div className="image-vignette absolute inset-0">
           <Image
             src={heroImage}
