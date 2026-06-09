@@ -137,7 +137,7 @@ const faqs = [
   ],
   [
     "Krijg ik een certificaat?",
-    "Ja. Na succesvolle afronding ontvang je een certificaat van de Dutch Reformer Academy."
+    "Ja. Na succesvolle afronding ontvang je een certificaat van de Reformer Pilates Academy."
   ],
   [
     "Kan ik in termijnen betalen?",
@@ -647,7 +647,7 @@ export default function LandingPage() {
               <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-ink text-white shadow-glow">
                 <MapPin aria-hidden="true" className="h-7 w-7" />
               </div>
-              <p className="text-xl font-semibold text-ink">Dutch Reformer Academy</p>
+              <p className="text-xl font-semibold text-ink">Reformer Pilates Academy</p>
               <p className="mt-2 text-graphite/60">Roosendaal</p>
             </div>
           </motion.div>
@@ -734,7 +734,7 @@ export default function LandingPage() {
                 Certificate of Completion
               </p>
               <h3 className="mt-5 font-display text-4xl font-bold text-ink">
-                Dutch Reformer Academy
+                Reformer Pilates Academy
               </h3>
               <div className="mx-auto my-8 h-px w-32 bg-bronze/40" />
               <p className="text-sm leading-7 text-graphite/60">

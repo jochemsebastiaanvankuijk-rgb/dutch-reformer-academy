@@ -17,7 +17,7 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dutchreformeracademy.nl"),
-  title: "Dutch Reformer Academy | Reformer Pilates Instructeursopleiding",
+  title: "Reformer Pilates Academy | Reformer Pilates Instructeursopleiding",
   description:
     "Word gecertificeerd Reformer Pilates instructeur met een exclusieve 5-daagse opleiding in Roosendaal. Maximaal 15 deelnemers, 40 contacturen en certificaat inbegrepen.",
   alternates: {
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     description:
       "Een intensieve 5-daagse opleiding in Roosendaal, gegeven door ervaren master trainers.",
     url: "https://dutchreformeracademy.nl",
-    siteName: "Dutch Reformer Academy",
+    siteName: "Reformer Pilates Academy",
     images: [
       {
         url: "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&w=1600&q=80",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dutch Reformer Academy",
+    title: "Reformer Pilates Academy",
     description: "5-daagse opleiding in Roosendaal voor maximaal 15 deelnemers."
   }
 };

@@ -13,7 +13,7 @@ export default function ThanksPage() {
           </h1>
           <p className="mt-5 leading-8 text-graphite/70">
             Zodra de betaling is verwerkt, ontvang je een bevestiging van je
-            reservering voor de Dutch Reformer Academy.
+            reservering voor de Reformer Pilates Academy.
           </p>
           <Link href="/" className="cta-button mt-8">
             Terug naar de academy

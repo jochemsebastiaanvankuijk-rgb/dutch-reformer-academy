@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const description = `Dutch Reformer Academy - ${body.packageName || "Opleiding"}`;
+  const description = `Reformer Pilates Academy - ${body.packageName || "Opleiding"}`;
   const isLocalhost = siteUrl.includes("localhost") || siteUrl.includes("127.0.0.1");
 
   const molliePayload: Record<string, unknown> = {
