@@ -210,6 +210,7 @@ const packages = [
       "Lesmateriaal",
       "Praktijkbegeleiding",
       "Certificaat",
+      "Lunch inbegrepen",
       "Koffie en thee"
     ]
   },
@@ -223,6 +224,7 @@ const packages = [
       "Verdiepende techniek",
       "Lesopbouw voor verschillende niveaus",
       "Coaching en cueing op hoger niveau",
+      "Lunch inbegrepen",
       "Opleiding start bij voldoende aanmeldingen"
     ]
   },
@@ -236,6 +238,7 @@ const packages = [
       "Docentontwikkeling",
       "Begeleiden van instructeurs",
       "Masterclass format en evaluatie",
+      "Lunch inbegrepen",
       "Opleiding start bij voldoende aanmeldingen"
     ]
   }
