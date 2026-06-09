@@ -103,7 +103,7 @@ function RegisterPageContent() {
         <div className="section-shell flex items-center justify-between gap-6">
           <div>
             <p className="font-display text-2xl font-bold leading-none">
-              Dutch Reformer Academy
+              Reformer Pilates Academy
             </p>
             <p className="mt-1 text-[11px] uppercase tracking-[0.28em] text-white/58">
               Inschrijving

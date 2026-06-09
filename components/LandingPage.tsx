@@ -313,7 +313,7 @@ export default function LandingPage() {
             <div>
               <p className="font-display text-[1.625rem] font-bold leading-none sm:text-[2rem]">
                 <span className="sm:hidden">RPA</span>
-                <span className="hidden sm:inline">Dutch Reformer Academy</span>
+                <span className="hidden sm:inline">Reformer Pilates Academy</span>
               </p>
             </div>
           </div>
