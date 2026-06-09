@@ -168,7 +168,7 @@ const faqs = [
     "Ja. Op de laatste dag werk je toe naar een praktijkmoment waarin techniek, lesopbouw, cueing en veiligheid samenkomen."
   ],
   [
-    "Kan ik doorgroeien na Reformer Instructeur Level A?",
+    "Kan ik doorgroeien naar Reformer Instructeur Level B of C?",
     "Ja. Na Reformer Instructeur Level A kun je verder verdiepen richting Reformer Instructeur Level B en uiteindelijk Reformer Instructeur Level C."
   ]
 ];
