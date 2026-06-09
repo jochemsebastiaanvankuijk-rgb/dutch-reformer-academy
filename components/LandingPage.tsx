@@ -391,7 +391,7 @@ export default function LandingPage() {
               {packages.map((item, index) => (
                 <article
                   key={item.name}
-                  className="flex min-h-[620px] flex-col rounded-lg border border-ink/10 bg-white/90 p-6 text-ink shadow-soft"
+                  className="flex h-full min-h-[540px] flex-col rounded-lg border border-ink/10 bg-white/90 p-6 text-ink shadow-soft"
                 >
                   <div className="grid grid-cols-[1fr_auto] items-start gap-4">
                     <div className="min-w-0 pr-2">
