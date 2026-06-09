@@ -339,6 +339,39 @@ export default function LandingPage() {
           </div>
         </div>
       </section>
+
+      <section className="bg-porcelain py-20 sm:py-28">
+        <div className="section-shell">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mx-auto max-w-4xl text-center"
+          >
+            <p className="eyebrow mb-5">Welkom bij Reformer Pilates Academy</p>
+            <h2 className="font-display text-4xl font-bold leading-tight text-ink sm:text-6xl">
+              Een plek waar kwaliteit, aandacht en liefde voor het vak samenkomen
+            </h2>
+            <div className="mx-auto mt-8 max-w-3xl space-y-5 text-lg leading-8 text-graphite/72">
+              <p>
+                Bij Reformer Pilates Academy leiden we instructeurs op die met
+                vertrouwen, rust en vakmanschap voor een groep kunnen staan. Onze
+                opleidingen zijn praktisch, persoonlijk en zorgvuldig opgebouwd,
+                zodat je niet alleen oefeningen leert, maar ook begrijpt hoe je
+                mensen echt goed begeleidt.
+              </p>
+              <p>
+                We geloven in kleine groepen, heldere techniek en persoonlijke
+                feedback. Of je nu je eerste stap zet als reformer instructeur of
+                verder wilt groeien in je ontwikkeling: we vinden het ontzettend
+                leuk als je jouw opleiding bij ons komt starten.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <section id="inschrijven" className="py-24 sm:py-32">
         <div className="section-shell">
           <motion.div
