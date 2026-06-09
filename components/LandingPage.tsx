@@ -324,7 +324,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 34 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-auto max-w-4xl text-center lg:mx-0 lg:max-w-5xl lg:text-left"
+              className="max-w-4xl text-left lg:max-w-5xl"
             >
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-clay/90">
                 Premium Reformer Pilates instructeur opleidingen
@@ -412,7 +412,7 @@ export default function LandingPage() {
                   </div>
                   <a
                     href={`/inschrijven?pakket=${packageSlug(item.name)}`}
-                    className="mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30"
+                    className="mt-8 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30"
                   >
                     Reserveer jouw plek
                     <ChevronDown aria-hidden="true" className="h-4 w-4 -rotate-90" />
