@@ -392,7 +392,7 @@ export default function LandingPage() {
                         {item.price}
                       </p>
                       <p className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-graphite/55">
-                        ex btw
+                        excl. btw
                       </p>
                     </div>
                   </div>
