@@ -441,49 +441,66 @@ export default function LandingPage() {
       <section id="opleidingsdata" className="soft-dark-section py-24 sm:py-32">
         <div className="section-shell">
           <SectionIntro title="Beschikbare opleidingsdata" light />
-          <div className="mt-14 grid items-stretch gap-4 lg:grid-cols-3">
-            {dates.map((item, index) => {
-              const progress = Math.round((item.filled / 15) * 100);
-              return (
-                <motion.article
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="mt-14 overflow-hidden rounded-lg border border-white/10 bg-white text-ink shadow-soft"
+          >
+            <div className="hidden grid-cols-[1.2fr_1fr_0.8fr_0.8fr_170px] gap-5 border-b border-ink/10 bg-linen px-6 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-graphite/55 lg:grid">
+              <span>Datum</span>
+              <span>Traject</span>
+              <span>Locatie</span>
+              <span>Bezetting</span>
+              <span className="text-right">Inschrijving</span>
+            </div>
+            <div className="divide-y divide-ink/10">
+              {dates.map((item, index) => (
+                <motion.div
                   key={item.date}
                   variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ delay: index * 0.06, duration: 0.6 }}
-                  className="flex h-full min-h-[430px] flex-col rounded-lg border border-white/10 bg-white p-6 text-ink shadow-soft transition duration-300 hover:-translate-y-1"
+                  transition={{ delay: index * 0.04, duration: 0.52 }}
+                  className="grid gap-5 px-6 py-6 transition duration-300 hover:bg-linen/70 lg:grid-cols-[1.2fr_1fr_0.8fr_0.8fr_170px] lg:items-center"
                 >
-                  <div className="mb-8 flex items-center gap-4">
-                    <CalendarDays aria-hidden="true" className="h-7 w-7 text-bronze" />
-                  </div>
-                  <h3 className="font-display text-3xl font-bold text-ink">{item.date}</h3>
-                  <div className="mt-4 rounded-lg border border-ink/10 bg-linen p-4">
-                    <p className="text-sm font-semibold text-ink">{item.level}</p>
-                    <div className="mt-3 grid gap-1.5 text-sm text-graphite/70">
-                      <p>Locatie: {item.location}</p>
-                      <p>Duur: {item.duration}</p>
+                  <div className="flex items-start gap-4">
+                    <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bronze/10 text-bronze">
+                      <CalendarDays aria-hidden="true" className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <p className="font-display text-2xl font-bold text-ink">
+                        {item.date}
+                      </p>
+                      <p className="mt-1 text-sm text-graphite/60 lg:hidden">
+                        {item.level}
+                      </p>
                     </div>
                   </div>
-                  <p className="mt-3 text-graphite/70">{item.status}</p>
-                  <div className="mt-7 h-1.5 rounded-full bg-ink/10">
-                    <div
-                      className="h-full rounded-full bg-bronze"
-                      style={{ width: `${progress}%` }}
-                    />
-                  </div>
-                  <p className="mt-2 text-right text-sm text-graphite/60">{progress}%</p>
+                  <p className="hidden text-sm font-semibold text-ink lg:block">
+                    {item.level}
+                  </p>
+                  <p className="text-sm text-graphite/70">
+                    <span className="font-semibold text-ink lg:hidden">Locatie: </span>
+                    {item.location}
+                  </p>
+                  <p className="text-sm text-graphite/70">
+                    <span className="font-semibold text-ink lg:hidden">Bezetting: </span>
+                    {item.filled} van 15 deelnemers
+                  </p>
                   <a
                     href={`/inschrijven?pakket=${packageSlug(item.level)}&datum=${encodeURIComponent(item.date)}`}
-                    className="mt-auto inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30"
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-ink bg-ink px-5 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30 lg:justify-self-end"
                   >
-                    Reserveer jouw plek
+                    Reserveer
                     <ChevronDown aria-hidden="true" className="h-4 w-4 -rotate-90" />
                   </a>
-                </motion.article>
-              );
-            })}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
       <section className="py-24 sm:py-32">
