@@ -33,12 +33,6 @@ import { useState } from "react";
 
 const heroImage = "/images/reformer-studio-header.jpeg";
 
-const trainerImages = [
-  "https://images.pexels.com/photos/6739930/pexels-photo-6739930.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "https://images.pexels.com/photos/28246590/pexels-photo-28246590.jpeg?auto=compress&cs=tinysrgb&w=900",
-  "https://images.pexels.com/photos/20044028/pexels-photo-20044028.jpeg?auto=compress&cs=tinysrgb&w=900"
-];
-
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 }
@@ -495,47 +489,6 @@ export default function LandingPage() {
           </motion.div>
         </div>
       </section>
-      <section className="py-24 sm:py-32">
-        <div className="section-shell">
-          <SectionIntro eyebrow="Master trainers" title="Ontmoet onze trainers" />
-          <div className="mt-14 grid gap-5 lg:grid-cols-3">
-            {trainerImages.map((src, index) => (
-              <motion.article
-                key={src}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ delay: index * 0.08, duration: 0.62 }}
-                className="overflow-hidden rounded-lg border border-ink/10 bg-white shadow-soft"
-              >
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={src}
-                    alt={`Trainer Naam ${index + 1}`}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="border-t border-ink/10 p-7">
-                  <h3 className="text-2xl font-semibold text-ink">Trainer Naam</h3>
-                  <p className="mt-1 text-sm uppercase tracking-[0.22em] text-bronze">
-                    Master Trainer Reformer Pilates
-                  </p>
-                  <p className="mt-5 leading-7 text-graphite/70">
-                    15+ jaar ervaring in Pilates, bewegingsleer en
-                    docentontwikkeling. Gespecialiseerd in het opleiden van
-                    nieuwe instructeurs.
-                  </p>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-
       <section className="soft-dark-section py-24 sm:py-32">
         <div className="section-shell">
           <SectionIntro
