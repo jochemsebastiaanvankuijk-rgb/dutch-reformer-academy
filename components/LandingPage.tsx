@@ -153,7 +153,7 @@ const faqs = [
   ],
   [
     "Hoe groot is de groep?",
-    "We werken met kleine groepen, zodat er voldoende aandacht is voor techniek, vragen en persoonlijke feedback tijdens het oefenen."
+    "We werken met groepen van maximaal 15 deelnemers zodat er voldoende aandacht is voor techniek, vragen en persoonlijke feedback tijdens het oefenen."
   ],
   [
     "Waar vindt de opleiding plaats?",
