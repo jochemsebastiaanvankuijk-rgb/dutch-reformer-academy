@@ -740,8 +740,9 @@ export default function LandingPage() {
               Na afronding
             </h2>
             <p className="mt-6 body-copy">
-              Na succesvolle afronding ontvang je een certificaat van de Dutch
-              Reformer Academy als bewijs van deelname en behaalde competenties.
+              Na succesvolle afronding ontvang je een certificaat van de
+              Reformer Pilates Academy als bewijs van deelname en behaalde
+              competenties.
             </p>
           </motion.div>
           <motion.div
