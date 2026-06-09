@@ -364,7 +364,7 @@ export default function LandingPage() {
               {packages.map((item, index) => (
                 <article
                   key={item.name}
-                  className="flex h-full flex-col rounded-lg border border-ink/10 bg-white/90 p-6 text-ink shadow-soft"
+                  className="flex min-h-[620px] flex-col rounded-lg border border-ink/10 bg-white/90 p-6 text-ink shadow-soft"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
