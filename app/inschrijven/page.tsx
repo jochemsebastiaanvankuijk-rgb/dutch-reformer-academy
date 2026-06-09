@@ -17,14 +17,14 @@ const packages = [
   {
     slug: "reformer-instructeur-level-b",
     name: "Reformer Instructeur Level B",
-    price: 799,
+    price: 899,
     days: "3 opleidingsdagen",
     description: "Verdieping voor progressies, programmering en verfijnde coaching."
   },
   {
     slug: "reformer-instructeur-level-c",
     name: "Reformer Instructeur Level C",
-    price: 799,
+    price: 899,
     days: "3 opleidingsdagen",
     description: "Voor trainers die willen doorgroeien richting mentoring en docentontwikkeling."
   }

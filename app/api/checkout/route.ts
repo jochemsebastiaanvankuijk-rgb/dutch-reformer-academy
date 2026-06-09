@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 const packagePrices: Record<string, number> = {
   "reformer-instructeur-level-a": 999,
-  "reformer-instructeur-level-b": 799,
-  "reformer-instructeur-level-c": 799
+  "reformer-instructeur-level-b": 899,
+  "reformer-instructeur-level-c": 899
 };
 
 const vatRate = 0.21;

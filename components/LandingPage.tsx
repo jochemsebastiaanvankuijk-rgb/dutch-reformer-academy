@@ -218,7 +218,7 @@ const packages = [
   },
   {
     name: "Reformer Instructeur Level B",
-    price: "€799",
+    price: "€899",
     text: "Verdieping voor trainers die meer willen werken met progressies, programmering en verfijnde coaching.",
     features: [
       "3 opleidingsdagen",
@@ -231,7 +231,7 @@ const packages = [
   },
   {
     name: "Reformer Instructeur Level C",
-    price: "€799",
+    price: "€899",
     text: "Voor ervaren trainers die hun rol willen uitbreiden richting mentoring, docentontwikkeling en opleiding.",
     features: [
       "3 opleidingsdagen",
