@@ -306,7 +306,7 @@ export default function LandingPage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover lg:object-[center_25%]"
           />
         </div>
         <div className="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-ink/10 backdrop-blur-md">
