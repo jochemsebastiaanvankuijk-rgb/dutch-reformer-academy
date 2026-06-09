@@ -89,42 +89,42 @@ const reviews = [
   {
     quote:
       "Een van de meest complete opleidingen die ik heb gevolgd. Direct toepasbaar in mijn studio.",
-    name: "Sanne de Vries",
+    name: "Sanne",
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=240&q=80"
   },
   {
     quote:
       "De persoonlijke begeleiding maakte het verschil. Ik voelde mij na vijf dagen klaar om les te geven.",
-    name: "Mila Janssen",
+    name: "Mila",
     image:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&q=80"
   },
   {
     quote:
       "Premium locatie, sterke methodiek en trainers die echt zien wat je nodig hebt.",
-    name: "Nora Bakker",
+    name: "Nora",
     image:
       "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=240&q=80"
   },
   {
     quote:
       "De balans tussen anatomie, techniek en praktijk was precies goed. Zeer professioneel.",
-    name: "Eva Smits",
+    name: "Eva",
     image:
       "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=240&q=80"
   },
   {
     quote:
       "Kleine groep, hoge standaard. Dit voelde als een boutique academy in plaats van een cursus.",
-    name: "Lotte Meijer",
+    name: "Lotte",
     image:
       "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=240&q=80"
   },
   {
     quote:
       "Ik heb mijn lessen direct kunnen verbeteren. De cueing modules waren uitzonderlijk waardevol.",
-    name: "Iris van Dijk",
+    name: "Iris",
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80"
   }
