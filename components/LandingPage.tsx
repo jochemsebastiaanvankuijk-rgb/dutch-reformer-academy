@@ -368,6 +368,9 @@ export default function LandingPage() {
                 leuk als je jouw opleiding bij ons komt starten.
               </p>
             </div>
+            <p className="mt-8 font-display text-2xl font-bold text-ink">
+              Liefs, Trainer Team Reformer Pilates Academy
+            </p>
           </motion.div>
         </div>
       </section>
