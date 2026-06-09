@@ -427,17 +427,8 @@ export default function LandingPage() {
                   transition={{ delay: index * 0.06, duration: 0.6 }}
                   className="flex h-full min-h-[430px] flex-col rounded-lg border border-white/10 bg-white p-6 text-ink shadow-soft transition duration-300 hover:-translate-y-1"
                 >
-                  <div className="mb-8 flex items-center justify-between gap-4">
+                  <div className="mb-8 flex items-center gap-4">
                     <CalendarDays aria-hidden="true" className="h-7 w-7 text-bronze" />
-                    <span
-                      className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                        item.disabled
-                          ? "bg-ink text-white"
-                          : "bg-bronze/10 text-bronze"
-                      }`}
-                    >
-                      {item.tone}
-                    </span>
                   </div>
                   <h3 className="font-display text-3xl font-bold text-ink">{item.date}</h3>
                   <div className="mt-4 rounded-lg border border-ink/10 bg-linen p-4">
