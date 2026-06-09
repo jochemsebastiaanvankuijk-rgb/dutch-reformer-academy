@@ -223,7 +223,8 @@ const packages = [
       "Advanced reformer progressies",
       "Verdiepende techniek",
       "Lesopbouw voor verschillende niveaus",
-      "Coaching en cueing op hoger niveau"
+      "Coaching en cueing op hoger niveau",
+      "Opleiding start bij voldoende aanmeldingen"
     ]
   },
   {
@@ -235,7 +236,8 @@ const packages = [
       "Train-the-trainer verdieping",
       "Docentontwikkeling",
       "Begeleiden van instructeurs",
-      "Masterclass format en evaluatie"
+      "Masterclass format en evaluatie",
+      "Opleiding start bij voldoende aanmeldingen"
     ]
   }
 ];
