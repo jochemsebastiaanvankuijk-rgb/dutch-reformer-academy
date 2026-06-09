@@ -457,7 +457,6 @@ export default function LandingPage() {
                     <p className="text-sm font-semibold text-ink">{item.level}</p>
                     <div className="mt-3 grid gap-1.5 text-sm text-graphite/70">
                       <p>Locatie: {item.location}</p>
-                      <p>Naam trainer: {item.trainer}</p>
                       <p>Duur: {item.duration}</p>
                     </div>
                   </div>
