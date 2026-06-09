@@ -31,8 +31,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { useState } from "react";
 
-const heroImage =
-  "https://images.unsplash.com/photo-1600881333168-2ef49b341f30?auto=format&fit=crop&w=2200&q=82";
+const heroImage = "/images/reformer-studio-header.jpeg";
 
 const trainerImages = [
   "https://images.pexels.com/photos/6739930/pexels-photo-6739930.jpeg?auto=compress&cs=tinysrgb&w=900",
