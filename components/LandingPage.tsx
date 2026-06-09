@@ -137,7 +137,7 @@ const faqs = [
   ],
   [
     "Krijg ik een certificaat?",
-    "Ja. Na succesvolle afronding ontvang je een certificaat van de Reformer Pilates Academy."
+    "Ja. Na succesvolle afronding ontvang je een officieel certificaat van de Reformer Pilates Academy."
   ],
   [
     "Kan ik in termijnen betalen?",
