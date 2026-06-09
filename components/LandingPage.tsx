@@ -170,6 +170,10 @@ const faqs = [
   [
     "Kan ik doorgroeien naar Reformer Instructeur Level B of C?",
     "Ja. Na Reformer Instructeur Level A kun je verder verdiepen richting Reformer Instructeur Level B en uiteindelijk Reformer Instructeur Level C."
+  ],
+  [
+    "Bedrijfsgegevens Reformer Pilates Academy",
+    "Reformer Pilates Academy is onderdeel van The Upper Club Roosendaal BV. KVK nummer 74558277, BTW nummer 8599.47.798.B.01. Gelegen aan De Stok 10 b, 4703 SZ in Roosendaal."
   ]
 ];
 
