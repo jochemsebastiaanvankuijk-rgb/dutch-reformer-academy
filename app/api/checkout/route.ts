@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const packagePrices: Record<string, number> = {
-  "reformer-instructeur-level-a": 1000,
+  "reformer-instructeur-level-a": 999,
   "reformer-instructeur-level-b": 799,
   "reformer-instructeur-level-c": 799
 };
+
+const vatRate = 0.21;
 
 export async function POST(request: NextRequest) {
   const apiKey = process.env.MOLLIE_API_KEY;
@@ -23,15 +25,16 @@ export async function POST(request: NextRequest) {
 
   const body = await request.json();
   const packageSlug = String(body.packageSlug || "");
-  const amount = packagePrices[packageSlug];
+  const amountExVat = packagePrices[packageSlug];
 
-  if (!amount) {
+  if (!amountExVat) {
     return NextResponse.json(
       { error: "Ongeldig opleidingstraject." },
       { status: 400 }
     );
   }
 
+  const amount = amountExVat * (1 + vatRate);
   const description = `Reformer Pilates Academy - ${body.packageName || "Opleiding"}`;
   const isLocalhost = siteUrl.includes("localhost") || siteUrl.includes("127.0.0.1");
 

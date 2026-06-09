@@ -10,7 +10,7 @@ const packages = [
   {
     slug: "reformer-instructeur-level-a",
     name: "Reformer Instructeur Level A",
-    price: 1000,
+    price: 999,
     days: "5 opleidingsdagen",
     description: "De volledige basisopleiding om zelfstandig professionele reformerlessen te verzorgen."
   },
@@ -29,6 +29,8 @@ const packages = [
     description: "Voor trainers die willen doorgroeien richting mentoring en docentontwikkeling."
   }
 ];
+
+const vatRate = 0.21;
 
 type CheckoutResponse = {
   checkoutUrl?: string;
@@ -54,6 +56,7 @@ function RegisterPageContent() {
     () => packages.find((item) => item.slug === selectedPackage) || packages[0],
     [selectedPackage]
   );
+  const totalInclVat = activePackage.price * (1 + vatRate);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -250,9 +253,29 @@ function RegisterPageContent() {
                 <span className="font-semibold text-ink">{selectedDate}</span>
               </div>
               <div className="flex items-center justify-between gap-4 border-t border-ink/10 pt-4">
-                <span className="text-lg font-semibold text-ink">Totaal</span>
-                <span className="font-display text-4xl font-bold text-ink">
+                <span className="text-graphite/70">Prijs excl. btw</span>
+                <span className="font-semibold text-ink">
                   €{activePackage.price.toLocaleString("nl-NL")}
+                </span>
+              </div>
+              <div className="flex items-center justify-between gap-4">
+                <span className="text-graphite/70">21% btw</span>
+                <span className="font-semibold text-ink">
+                  €
+                  {(totalInclVat - activePackage.price).toLocaleString("nl-NL", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  })}
+                </span>
+              </div>
+              <div className="flex items-center justify-between gap-4 border-t border-ink/10 pt-4">
+                <span className="text-lg font-semibold text-ink">Totaal incl. btw</span>
+                <span className="font-display text-4xl font-bold text-ink">
+                  €
+                  {totalInclVat.toLocaleString("nl-NL", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  })}
                 </span>
               </div>
             </div>

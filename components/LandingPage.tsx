@@ -203,7 +203,9 @@ const locationItems: Array<{
 const packages = [
   {
     name: "Reformer Instructeur Level A",
-    price: "€1.000",
+    price: "€999",
+    originalPrice: "€1.499",
+    dealLabel: "Summer Deal",
     text: "De volledige 5-daagse basisopleiding om zelfstandig professionele reformerlessen te verzorgen.",
     features: [
       "5 opleidingsdagen",
@@ -373,7 +375,29 @@ export default function LandingPage() {
                         {item.name}
                       </h3>
                     </div>
-                    <p className="font-display text-3xl font-bold">{item.price}</p>
+                    <div className="text-right">
+                      {"dealLabel" in item ? (
+                        <p className="mb-2 inline-flex rounded-full bg-bronze/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-bronze">
+                          {item.dealLabel}
+                        </p>
+                      ) : null}
+                      {"originalPrice" in item ? (
+                        <p className="text-sm font-semibold text-graphite/45 line-through">
+                          Van {item.originalPrice}
+                        </p>
+                      ) : null}
+                      <p className="font-display text-3xl font-bold">
+                        {item.price}
+                      </p>
+                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-graphite/55">
+                        Excl. 21% btw
+                      </p>
+                      {"dealLabel" in item ? (
+                        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-graphite/55">
+                          Nu tijdelijk
+                        </p>
+                      ) : null}
+                    </div>
                   </div>
                   <p
                     className="mt-4 leading-7 text-graphite/70"
