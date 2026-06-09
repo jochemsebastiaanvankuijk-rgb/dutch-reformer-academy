@@ -336,8 +336,8 @@ export default function LandingPage() {
                 </span>
               </h1>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl">
-                Praktijkgericht, persoonlijk en exclusief voor maximaal 15
-                deelnemers per groep.
+                Premium opleiding, Kleine groepen, Persoonlijke begeleiding,
+                Praktijkgericht.
               </p>
             </motion.div>
           </div>
