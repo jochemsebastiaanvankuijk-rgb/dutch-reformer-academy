@@ -104,13 +104,18 @@ function RegisterPageContent() {
     <main className="min-h-screen bg-porcelain">
       <section className="border-b border-ink/10 bg-ink py-6 text-white">
         <div className="section-shell flex items-center justify-between gap-6">
-          <div>
+          <div className="flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/35 bg-white/10 text-[0.7rem] font-bold tracking-[0.16em] text-white shadow-glow">
+              RPA
+            </span>
+            <div>
             <p className="font-display text-2xl font-bold leading-none">
               Reformer Pilates Academy
             </p>
             <p className="mt-1 text-[11px] uppercase tracking-[0.28em] text-white/58">
               Inschrijving
             </p>
+            </div>
           </div>
           <Link
             href="/"

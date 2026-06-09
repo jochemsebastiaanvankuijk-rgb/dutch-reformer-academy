@@ -314,10 +314,12 @@ export default function LandingPage() {
         </div>
         <div className="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-ink/10 backdrop-blur-md">
           <div className="section-shell flex h-20 items-center justify-between">
-            <div>
-              <p className="font-display text-[1.625rem] font-bold leading-none sm:text-[2rem]">
-                <span className="sm:hidden">RPA</span>
-                <span className="hidden sm:inline">Reformer Pilates Academy</span>
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/45 bg-white/10 text-[0.7rem] font-bold tracking-[0.16em] text-white shadow-glow backdrop-blur-md sm:h-12 sm:w-12 sm:text-xs">
+                RPA
+              </span>
+              <p className="font-display text-[1.35rem] font-bold leading-none sm:text-[2rem]">
+                Reformer Pilates Academy
               </p>
             </div>
           </div>
