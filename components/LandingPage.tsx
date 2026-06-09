@@ -366,39 +366,34 @@ export default function LandingPage() {
                   key={item.name}
                   className="flex min-h-[620px] flex-col rounded-lg border border-ink/10 bg-white/90 p-6 text-ink shadow-soft"
                 >
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div>
+                  <div className="grid grid-cols-[1fr_auto] items-start gap-4">
+                    <div className="min-w-0 pr-2">
                       <p
                         className="text-xs font-semibold uppercase tracking-[0.28em] text-bronze"
                       >
                         Pakket {index + 1}
                       </p>
-                      <h3 className="mt-3 font-display text-4xl font-bold">
-                        {item.name}
-                      </h3>
-                    </div>
-                    <div className="text-right">
                       {"dealLabel" in item ? (
-                        <p className="mb-2 inline-flex rounded-full bg-bronze/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-bronze">
+                        <p className="mt-3 inline-flex rounded-full bg-bronze/12 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-bronze">
                           {item.dealLabel}
                         </p>
                       ) : null}
+                      <h3 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">
+                        {item.name}
+                      </h3>
+                    </div>
+                    <div className="shrink-0 text-right">
                       {"originalPrice" in item ? (
                         <p className="text-sm font-semibold text-graphite/45 line-through">
                           Van {item.originalPrice}
                         </p>
                       ) : null}
-                      <p className="font-display text-3xl font-bold">
+                      <p className="font-display text-2xl font-bold leading-none sm:text-3xl">
                         {item.price}
                       </p>
-                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-graphite/55">
-                        Excl. 21% btw
+                      <p className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-graphite/55">
+                        ex btw
                       </p>
-                      {"dealLabel" in item ? (
-                        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-graphite/55">
-                          Nu tijdelijk
-                        </p>
-                      ) : null}
                     </div>
                   </div>
                   <p
