@@ -5,9 +5,9 @@ export const trainingDates = [
     location: "Roosendaal",
     trainer: "xxx",
     duration: "5 dagen",
-    filled: 12,
-    status: "12 van 15 plekken bezet",
-    tone: "Nog 3 plekken",
+    filled: 4,
+    status: "4 van 15 plekken bezet",
+    tone: "Beschikbaar",
     disabled: false
   },
   {
@@ -16,8 +16,8 @@ export const trainingDates = [
     location: "Roosendaal",
     trainer: "xxx",
     duration: "5 dagen",
-    filled: 8,
-    status: "8 van 15 plekken bezet",
+    filled: 3,
+    status: "3 van 15 plekken bezet",
     tone: "Beschikbaar",
     disabled: false
   },
@@ -27,10 +27,10 @@ export const trainingDates = [
     location: "Roosendaal",
     trainer: "xxx",
     duration: "5 dagen",
-    filled: 15,
-    status: "Volgeboekt",
-    tone: "Wachtlijst",
-    disabled: true
+    filled: 4,
+    status: "4 van 15 plekken bezet",
+    tone: "Beschikbaar",
+    disabled: false
   },
   {
     date: "7 t/m 11 september",
@@ -38,8 +38,8 @@ export const trainingDates = [
     location: "Roosendaal",
     trainer: "xxx",
     duration: "5 dagen",
-    filled: 4,
-    status: "4 van 15 plekken bezet",
+    filled: 0,
+    status: "0 van 15 plekken bezet",
     tone: "Nieuwe groep",
     disabled: false
   },
@@ -49,8 +49,8 @@ export const trainingDates = [
     location: "Roosendaal",
     trainer: "xxx",
     duration: "5 dagen",
-    filled: 3,
-    status: "3 van 15 plekken bezet",
+    filled: 0,
+    status: "0 van 15 plekken bezet",
     tone: "Nieuwe groep",
     disabled: false
   },
@@ -60,8 +60,8 @@ export const trainingDates = [
     location: "Roosendaal",
     trainer: "xxx",
     duration: "5 dagen",
-    filled: 2,
-    status: "2 van 15 plekken bezet",
+    filled: 0,
+    status: "0 van 15 plekken bezet",
     tone: "Nieuwe groep",
     disabled: false
   }
