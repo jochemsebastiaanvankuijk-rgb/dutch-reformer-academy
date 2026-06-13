@@ -399,28 +399,32 @@ export default function LandingPage() {
                   key={item.name}
                   className="flex h-full min-h-[540px] flex-col rounded-lg border border-ink/10 bg-white/90 p-6 text-ink shadow-soft"
                 >
-                  <div className="grid grid-cols-[1fr_auto] items-start gap-4">
+                  <div className="grid min-h-[190px] grid-cols-[1fr_auto] items-start gap-4">
                     <div className="min-w-0 pr-2">
                       <p
                         className="text-xs font-semibold uppercase tracking-[0.28em] text-bronze"
                       >
                         Pakket {index + 1}
                       </p>
-                      {"dealLabel" in item ? (
-                        <p className="mt-3 inline-flex rounded-full bg-bronze/12 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-bronze">
-                          {item.dealLabel}
-                        </p>
-                      ) : null}
+                      <div className="mt-3 min-h-[28px]">
+                        {"dealLabel" in item ? (
+                          <p className="inline-flex rounded-full bg-bronze/12 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-bronze">
+                            {item.dealLabel}
+                          </p>
+                        ) : null}
+                      </div>
                       <h3 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl">
                         {item.name}
                       </h3>
                     </div>
-                    <div className="shrink-0 text-right">
-                      {"originalPrice" in item ? (
-                        <p className="text-sm font-semibold text-graphite/45 line-through">
-                          Van {item.originalPrice}
-                        </p>
-                      ) : null}
+                    <div className="min-w-[86px] shrink-0 text-right">
+                      <div className="min-h-[24px]">
+                        {"originalPrice" in item ? (
+                          <p className="text-sm font-semibold text-graphite/45 line-through">
+                            Van {item.originalPrice}
+                          </p>
+                        ) : null}
+                      </div>
                       <p className="font-display text-2xl font-bold leading-none sm:text-3xl">
                         {item.price}
                       </p>
@@ -429,12 +433,10 @@ export default function LandingPage() {
                       </p>
                     </div>
                   </div>
-                  <p
-                    className="mt-4 leading-7 text-graphite/70"
-                  >
+                  <p className="mt-4 min-h-[84px] leading-7 text-graphite/70">
                     {item.text}
                   </p>
-                  <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                  <div className="mt-6 grid flex-1 content-start gap-3 sm:grid-cols-2">
                     {item.features.map((feature) => (
                       <div key={feature} className="flex items-start gap-3">
                         <Check
