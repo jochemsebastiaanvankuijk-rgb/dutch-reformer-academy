@@ -302,14 +302,14 @@ export default function LandingPage() {
   return (
     <main className="overflow-hidden bg-porcelain">
       <section className="relative flex min-h-[60vh] items-center pb-10 pt-24 text-white sm:pt-24 lg:min-h-[60vh] lg:items-start lg:pb-0 lg:pt-28">
-        <div className="image-vignette absolute inset-0">
+        <div className="image-vignette absolute inset-0 overflow-hidden">
           <Image
             src={heroImage}
             alt="Reformer Pilates training in een luxe studio"
             fill
             priority
             sizes="100vw"
-            className="object-cover lg:object-bottom"
+            className="object-cover lg:translate-y-[10%] lg:scale-125 lg:object-center"
           />
         </div>
         <div className="absolute inset-x-0 top-0 z-20 border-b border-white/10 bg-ink/10 backdrop-blur-md">
