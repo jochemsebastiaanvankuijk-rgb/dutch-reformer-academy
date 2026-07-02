@@ -13,6 +13,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "otium.nl"
+      },
+      {
+        protocol: "https",
+        hostname: "otium-wellness-hotel.com"
       }
     ]
   }
