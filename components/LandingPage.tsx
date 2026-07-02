@@ -35,15 +35,15 @@ const heroImage = "/images/reformer-studio-header.jpeg";
 
 const otiumImages = [
   {
-    src: "https://otium.nl/wp-content/uploads/2024/01/slim-overnachten-bij-otium-wellness-hotel-roosendaal.jpg",
+    src: "https://otium.nl/assets/components/phpthumbof/cache/otium-header.550462694435b286284cbac582a1e3fd.webp",
     alt: "Otium Wellness Hotel Roosendaal"
   },
   {
-    src: "https://otium.nl/wp-content/uploads/2024/01/luxe-kamer-otium.jpg",
+    src: "https://otium.nl/assets/gallery/2/91.jpg",
     alt: "Luxe kamer bij Otium Wellness Hotel"
   },
   {
-    src: "https://otium-wellness-hotel.com/wp-content/uploads/2024/01/spa-suite-otium-2.jpg",
+    src: "https://otium-wellness-hotel.com/assets/gallery/3/81.jpg",
     alt: "Spa suite en wellness bij Otium Wellness Hotel"
   }
 ];
@@ -820,6 +820,7 @@ export default function LandingPage() {
                 src={otiumImages[0].src}
                 alt={otiumImages[0].alt}
                 fill
+                unoptimized
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
@@ -833,6 +834,7 @@ export default function LandingPage() {
                   src={image.src}
                   alt={image.alt}
                   fill
+                  unoptimized
                   sizes="(min-width: 1024px) 25vw, 50vw"
                   className="object-cover"
                 />
