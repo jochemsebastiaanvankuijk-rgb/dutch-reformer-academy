@@ -34,9 +34,18 @@ import { useState } from "react";
 const heroImage = "/images/reformer-studio-header.jpeg";
 
 const otiumImages = [
-  "https://otium.nl/wp-content/uploads/2025/05/Otium-083.jpg",
-  "https://otium.nl/wp-content/uploads/2025/05/Otium-mei-2025-24.jpg",
-  "https://otium.nl/wp-content/uploads/2025/05/Otium-mei-2025-22.jpg"
+  {
+    src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1400&q=82",
+    alt: "Hotel sfeerbeeld"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1000&q=82",
+    alt: "Comfortabele hotelkamer"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=82",
+    alt: "Wellness en ontspanning"
+  }
 ];
 
 const fadeUp = {
@@ -646,61 +655,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
-        <div className="section-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <h2 className="font-display text-4xl font-bold sm:text-6xl">Locatie</h2>
-            <p className="mt-6 body-copy">
-              De opleiding vindt plaats in Roosendaal in een zeer luxe en
-              volledig uitgeruste reformer studio voorzien van airco.
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {locationItems.map(({ icon: Icon, title, text }) => (
-                <div key={title} className="flex gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-bronze">
-                    <Icon aria-hidden="true" className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-ink">{title}</h3>
-                    <p className="mt-1 text-sm leading-6 text-graphite/60">{text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="relative min-h-[420px] overflow-hidden rounded-lg border border-ink/10 bg-porcelain shadow-soft"
-          >
-            <iframe
-              title="Kaart van Roosendaal"
-              src="https://www.google.com/maps?q=Roosendaal%2C%20Nederland&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 h-full w-full border-0"
-            />
-            <div className="absolute inset-0 bg-ink/10 mix-blend-multiply" />
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink/42 to-transparent" />
-            <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center rounded-lg border border-white/55 bg-white/82 px-8 py-7 text-center shadow-soft backdrop-blur-xl">
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-ink text-white shadow-glow">
-                <MapPin aria-hidden="true" className="h-7 w-7" />
-              </div>
-              <p className="text-xl font-semibold text-ink">Reformer Pilates Academy</p>
-              <p className="mt-2 text-graphite/60">Roosendaal</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       <section className="bg-porcelain py-24 sm:py-32">
         <div className="section-shell grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
           <motion.div
@@ -795,7 +749,7 @@ export default function LandingPage() {
           >
             <p className="eyebrow mb-4">Overnachten in Roosendaal</p>
             <h2 className="font-display text-4xl font-bold leading-tight text-ink sm:text-6xl">
-              Exclusieve hotelafspraken bij Otium
+              Exclusieve hotelafspraken bij Otium Wellness Hotel
             </h2>
             <p className="mt-6 text-lg leading-8 text-graphite/72">
               Kom je niet uit de buurt? Dan kun je tijdens je opleidingsdagen
@@ -835,21 +789,21 @@ export default function LandingPage() {
           >
             <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-lg border border-ink/10 shadow-soft">
               <Image
-                src={otiumImages[0]}
-                alt="Otium Wellness Hotel Roosendaal"
+                src={otiumImages[0].src}
+                alt={otiumImages[0].alt}
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
-            {otiumImages.slice(1).map((src, index) => (
+            {otiumImages.slice(1).map((image) => (
               <div
-                key={src}
+                key={image.src}
                 className="relative aspect-[4/3] overflow-hidden rounded-lg border border-ink/10 shadow-soft"
               >
                 <Image
-                  src={src}
-                  alt={`Otium hotel sfeerfoto ${index + 2}`}
+                  src={image.src}
+                  alt={image.alt}
                   fill
                   sizes="(min-width: 1024px) 25vw, 50vw"
                   className="object-cover"
@@ -1265,6 +1219,61 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-linen py-24 sm:py-32">
+        <div className="section-shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <h2 className="font-display text-4xl font-bold sm:text-6xl">Locatie</h2>
+            <p className="mt-6 body-copy">
+              De opleiding vindt plaats in Roosendaal in een zeer luxe en
+              volledig uitgeruste reformer studio voorzien van airco.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {locationItems.map(({ icon: Icon, title, text }) => (
+                <div key={title} className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-bronze">
+                    <Icon aria-hidden="true" className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-ink">{title}</h3>
+                    <p className="mt-1 text-sm leading-6 text-graphite/60">{text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative min-h-[420px] overflow-hidden rounded-lg border border-ink/10 bg-porcelain shadow-soft"
+          >
+            <iframe
+              title="Kaart van Roosendaal"
+              src="https://www.google.com/maps?q=Roosendaal%2C%20Nederland&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 h-full w-full border-0"
+            />
+            <div className="absolute inset-0 bg-ink/10 mix-blend-multiply" />
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink/42 to-transparent" />
+            <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center rounded-lg border border-white/55 bg-white/82 px-8 py-7 text-center shadow-soft backdrop-blur-xl">
+              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-ink text-white shadow-glow">
+                <MapPin aria-hidden="true" className="h-7 w-7" />
+              </div>
+              <p className="text-xl font-semibold text-ink">Reformer Pilates Academy</p>
+              <p className="mt-2 text-graphite/60">Roosendaal</p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
