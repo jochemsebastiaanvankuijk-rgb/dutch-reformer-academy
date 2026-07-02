@@ -33,6 +33,12 @@ import { useState } from "react";
 
 const heroImage = "/images/reformer-studio-header.jpeg";
 
+const otiumImages = [
+  "https://otium.nl/wp-content/uploads/2025/05/Otium-083.jpg",
+  "https://otium.nl/wp-content/uploads/2025/05/Otium-mei-2025-24.jpg",
+  "https://otium.nl/wp-content/uploads/2025/05/Otium-mei-2025-22.jpg"
+];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0 }
@@ -203,6 +209,7 @@ const packages = [
     price: "€999",
     originalPrice: "€1.499",
     dealLabel: "Summer Deal",
+    badge: "Meest verkocht",
     text: "De volledige 5-daagse basisopleiding om zelfstandig professionele reformerlessen te verzorgen.",
     features: [
       "5 opleidingsdagen",
@@ -397,8 +404,19 @@ export default function LandingPage() {
               {packages.map((item, index) => (
                 <article
                   key={item.name}
-                  className="flex h-full min-h-[540px] flex-col rounded-lg border border-ink/10 bg-white/90 p-6 text-ink shadow-soft"
+                  className={`flex h-full min-h-[540px] flex-col rounded-lg p-6 text-ink shadow-soft ${
+                    "badge" in item
+                      ? "border border-bronze/35 bg-linen"
+                      : "border border-ink/10 bg-white/90"
+                  }`}
                 >
+                  {"badge" in item ? (
+                    <p className="-mt-1 mb-5 inline-flex w-fit rounded-full bg-ink px-3 py-1 text-[0.68rem] font-semibold tracking-[0.08em] text-white">
+                      {item.badge}
+                    </p>
+                  ) : (
+                    <div className="mb-5 h-5" />
+                  )}
                   <div className="grid min-h-[190px] grid-cols-[1fr_auto] items-start gap-4">
                     <div className="min-w-0 pr-2">
                       <p
@@ -428,7 +446,7 @@ export default function LandingPage() {
                       <p className="font-display text-2xl font-bold leading-none sm:text-3xl">
                         {item.price}
                       </p>
-                      <p className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-graphite/55">
+                      <p className="mt-1 text-[0.72rem] font-medium text-graphite/55">
                         excl. btw
                       </p>
                     </div>
@@ -679,6 +697,81 @@ export default function LandingPage() {
               <p className="text-xl font-semibold text-ink">Reformer Pilates Academy</p>
               <p className="mt-2 text-graphite/60">Roosendaal</p>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-linen py-24 sm:py-32">
+        <div className="section-shell grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <p className="eyebrow mb-4">Overnachten in Roosendaal</p>
+            <h2 className="font-display text-4xl font-bold leading-tight text-ink sm:text-6xl">
+              Exclusieve hotelafspraken bij Otium
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-graphite/72">
+              Kom je niet uit de buurt? Dan kun je tijdens je opleidingsdagen
+              comfortabel overnachten bij het naastgelegen Otium Wellness Hotel.
+              Speciaal voor cursisten van de Reformer Pilates Academy hebben we
+              exclusieve prijsafspraken gemaakt.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {[
+                "Naast de opleidingslocatie",
+                "Ideaal voor meerdaagse trainingen",
+                "Rustige plek om op te laden"
+              ].map((item) => (
+                <div key={item} className="flex gap-3 rounded-lg border border-ink/10 bg-white p-4 text-sm leading-6 text-graphite/72">
+                  <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-bronze" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <a
+              href="https://otium.nl/zakelijk-overnachten-hotel-in-roosendaal/zakelijk-boeken"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-9 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink bg-ink px-6 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30"
+            >
+              Bekijk Otium hotelafspraak
+              <ChevronDown aria-hidden="true" className="h-4 w-4 -rotate-90" />
+            </a>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 gap-4"
+          >
+            <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-lg border border-ink/10 shadow-soft">
+              <Image
+                src={otiumImages[0]}
+                alt="Otium Wellness Hotel Roosendaal"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            {otiumImages.slice(1).map((src, index) => (
+              <div
+                key={src}
+                className="relative aspect-[4/3] overflow-hidden rounded-lg border border-ink/10 shadow-soft"
+              >
+                <Image
+                  src={src}
+                  alt={`Otium hotel sfeerfoto ${index + 2}`}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
