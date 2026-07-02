@@ -701,6 +701,90 @@ export default function LandingPage() {
         </div>
       </section>
 
+      <section className="bg-porcelain py-24 sm:py-32">
+        <div className="section-shell grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="order-2 lg:order-1"
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-ink/10 shadow-soft">
+                <Image
+                  src={heroImage}
+                  alt="Reformer studio met Your Reformer apparatuur"
+                  fill
+                  sizes="(min-width: 1024px) 30vw, 50vw"
+                  className="object-cover object-[28%_72%]"
+                />
+              </div>
+              <div className="grid gap-4">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-ink/10 shadow-soft">
+                  <Image
+                    src={heroImage}
+                    alt="Professionele reformers in de opleidingsstudio"
+                    fill
+                    sizes="(min-width: 1024px) 25vw, 50vw"
+                    className="object-cover object-[68%_78%]"
+                  />
+                </div>
+                <div className="rounded-lg border border-ink/10 bg-white p-6 shadow-soft">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-bronze">
+                    Studio equipment
+                  </p>
+                  <p className="mt-4 font-display text-3xl font-bold leading-tight text-ink">
+                    Train op de reformers waar je straks zelf mee werkt.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="order-1 lg:order-2"
+          >
+            <p className="eyebrow mb-4">Officiele opleidingspartner</p>
+            <h2 className="font-display text-4xl font-bold leading-tight text-ink sm:text-6xl">
+              In samenwerking met Matrix en Your Reformer
+            </h2>
+            <p className="mt-6 text-lg leading-8 text-graphite/72">
+              Reformer Pilates Academy is officieel opleidingspartner van
+              Matrix. Matrix is distributeur van Your Reformer, het merk van de
+              reformers waarop wij in de studio trainen en opleiden.
+            </p>
+            <div className="mt-8 grid gap-4">
+              {[
+                "Opleiden op professionele reformers",
+                "Herkenbare apparatuur voor studio's en instructeurs",
+                "Praktijkgericht leren met materiaal uit de dagelijkse lespraktijk"
+              ].map((item) => (
+                <div key={item} className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-bronze">
+                    <BadgeCheck aria-hidden="true" className="h-5 w-5" />
+                  </div>
+                  <p className="pt-2 text-sm leading-6 text-graphite/70">{item}</p>
+                </div>
+              ))}
+            </div>
+            <a
+              href="https://yourreformer.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-9 inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ink bg-ink px-6 py-3 text-sm font-semibold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-bronze focus:outline-none focus:ring-4 focus:ring-bronze/30"
+            >
+              Bekijk Your Reformer
+              <ChevronDown aria-hidden="true" className="h-4 w-4 -rotate-90" />
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       <section className="bg-linen py-24 sm:py-32">
         <div className="section-shell grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <motion.div
