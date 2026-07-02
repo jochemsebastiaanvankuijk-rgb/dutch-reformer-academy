@@ -707,6 +707,32 @@ export default function LandingPage() {
             <h2 className="font-display text-4xl font-bold leading-tight text-ink sm:text-6xl">
               In samenwerking met Matrix Fitness Benelux en Your Reformer
             </h2>
+            <div className="mt-7 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-lg border border-ink/10 bg-white px-5 py-5 shadow-soft">
+                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-graphite/45">
+                  Opleidingspartner
+                </p>
+                <div className="mt-3 flex items-end gap-2">
+                  <p className="font-sans text-2xl font-black uppercase tracking-[0.2em] text-ink sm:text-3xl">
+                    M<span className="relative inline-block px-0.5">A<span className="absolute bottom-1 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-red-500" /></span>trix
+                  </p>
+                </div>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-graphite/55">
+                  Fitness Benelux
+                </p>
+              </div>
+              <div className="rounded-lg border border-ink/10 bg-white px-5 py-5 shadow-soft">
+                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-graphite/45">
+                  Apparatuur
+                </p>
+                <p className="mt-3 font-display text-3xl font-bold leading-none text-ink sm:text-4xl">
+                  Your Reformer
+                </p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-graphite/55">
+                  Studio equipment
+                </p>
+              </div>
+            </div>
             <p className="mt-6 text-lg leading-8 text-graphite/72">
               Reformer Pilates Academy is officieel opleidingspartner van
               Matrix Fitness Benelux. Matrix is distributeur van Your Reformer:
