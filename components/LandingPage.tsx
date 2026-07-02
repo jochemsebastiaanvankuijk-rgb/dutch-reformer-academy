@@ -705,12 +705,14 @@ export default function LandingPage() {
           >
             <p className="eyebrow mb-4">Officiele opleidingspartner</p>
             <h2 className="font-display text-4xl font-bold leading-tight text-ink sm:text-6xl">
-              In samenwerking met Matrix en Your Reformer
+              In samenwerking met Matrix Fitness Benelux en Your Reformer
             </h2>
             <p className="mt-6 text-lg leading-8 text-graphite/72">
               Reformer Pilates Academy is officieel opleidingspartner van
-              Matrix. Matrix is distributeur van Your Reformer, het merk van de
-              reformers waarop wij in de studio trainen en opleiden.
+              Matrix Fitness Benelux. Matrix is distributeur van Your Reformer:
+              het topsegment in Reformer Pilates banken. De studio van de
+              Reformer Pilates Academy is uitgerust met de nieuwste Your
+              Reformer apparatuur.
             </p>
             <div className="mt-8 grid gap-4">
               {[
