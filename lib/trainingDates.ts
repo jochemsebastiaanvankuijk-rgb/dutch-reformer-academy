@@ -60,8 +60,8 @@ export const trainingDates = [
     location: "Roosendaal",
     trainer: "xxx",
     duration: "5 dagen",
-    filled: 0,
-    status: "0 van 15 plekken bezet",
+    filled: 1,
+    status: "1 van 15 plekken bezet",
     tone: "Nieuwe groep",
     disabled: false
   }
